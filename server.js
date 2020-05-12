@@ -3,9 +3,15 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 
+
+const PORT = process.env.port || 3000;
+
+const indexRoute = require("./src/routes/index-routes");
+const companyRoute = require("./src/routes/company-route");
+
 //PERSISTENCIA
 mongoose.connect(
-  "mongodb+srv://Rafael:Rafael1234@cluster0-7a7r3.mongodb.net/test?retryWrites=true&w=majority",
+  "mongodb://Rafael12345:1234@cluster0-shard-00-00-7a7r3.mongodb.net:27017,cluster0-shard-00-01-7a7r3.mongodb.net:27017,cluster0-shard-00-02-7a7r3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -17,19 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Definindo porta
-const PORT = process.env.port || 3000;
 
-// //ROTAS
-const companyRoute = require("./src/routes/company-route");
-// var signupRoute = require("./src/routes/signup-route");
-// var loginRoute = require("./src/routes/login-route");
 
 //Vincular a aplicacao(app) com o motor de rotas
-// app.use("/api", indexRoute);
+app.use("/api", indexRoute);
 app.use("/api/company", companyRoute);
-// app.use("/api/registrar", signupRoute);
-// app.use("/api/login", loginRoute);
 
-app.listen(3000, function(){
-    console.log("Servidor Ligado");
-})
+
+app.listen(PORT, () => {
+  console.log("server on");
+});
