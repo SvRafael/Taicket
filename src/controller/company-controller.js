@@ -17,9 +17,9 @@ const companyRepository = require("../repositories/company-repository");
 
 exports.post = async (req, res) => {
     try {
-      const c0ompany = await Companyrepository.post(req.body);
+      const company = await companyRepository.post(req.body);
   
-      res.status(201).json({ message: "Empresa criada com sucesso!", user });
+      res.status(201).json({ message: "Empresa criada com sucesso!", company });
     } catch (error) {
       res.status(500).json({ message: "Erro ao criar empresa!", error });
     }
