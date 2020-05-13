@@ -1,16 +1,19 @@
 const jwt = require("jsonwebtoken");
 const Company = require("../app/models/company");
+const Ticket = require("../app/models/ticket");
 
-const authorize = (req, res, next) => {
+const authorize = async (req, res, next) => {
   try {
     const decoded = jwt.verify(req.headers.authorization, process.env.SECRET);
 
-    req.company = Company.findById(decoded.id);
+    req.company = await Company.findById(decoded.id);
+    // req.ticket = await Ticket.findById(decoded.id);
 
     next();
   } catch (error) {
+      console.log(error)
     res.status(401).json({
-      message: "Usuário não autenticado!",
+      message: "Empresa não autenticada!",
     });
   }
 };

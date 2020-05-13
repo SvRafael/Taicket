@@ -12,6 +12,7 @@ const authService = require("./src/services/auth-service");
 const indexRoute = require("./src/routes/index-routes");
 const companyRoute = require("./src/routes/company-route");
 const authRoutes = require("./src/routes/auth-routes");
+const ticketRoute = require("./src/routes/ticket-routes");
 
 //PERSISTENCIA
 mongoose.connect(
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use("/api", indexRoute);
 app.use("/api/company", authService, companyRoute);
 app.use("/api/auth", authRoutes);
+app.use("/api/ticket", ticketRoute);
 
 app.listen(PORT, () => {
   console.log("server on");

@@ -50,6 +50,6 @@ exports.login = async (data) => {
       id: company.id,
       email: company.email,
     },
-    token: jwt.sign({ id: company.id }, process.env.SECRET, { expiresIn: 120 }),
+    token: jwt.sign({ id: company.id }, process.env.SECRET, { expiresIn: 86400 }),
   };
 };
