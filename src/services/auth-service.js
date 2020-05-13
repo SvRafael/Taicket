@@ -7,7 +7,6 @@ const authorize = async (req, res, next) => {
     const decoded = jwt.verify(req.headers.authorization, process.env.SECRET);
 
     req.company = await Company.findById(decoded.id);
-    // req.ticket = await Ticket.findById(decoded.id);
 
     next();
   } catch (error) {
