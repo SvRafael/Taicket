@@ -49,7 +49,7 @@ exports.getById = async (req, res) => {
 
 exports.put = async (req, res) => {
   try {
-    const event = await eventRepository.put(req.data);
+    const event = await eventRepository.put(req.params.id, req.body);
 
     if (event) {
       res
