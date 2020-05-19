@@ -1,15 +1,14 @@
-const express = require("express")
-var router = express.Router(); //Interceptacao das rotas
-const ticketController = require("./../controller/ticket-controller")
+const express = require("express");
+const router = express.Router({ mergeParams: true });
+const ticketController = require("./../controller/ticket-controller");
+
 
 router.post("/", ticketController.post);
 
-router.get("/", ticketController.get);
+router.get("/", ticketController.getAll);
 
-router.get("/ticketTicker", ticketController.getById);
+router.get("/:id", ticketController.getById);
 
-router.put("/:ticketId", ticketController.put);
-
-router.delete("/:ticketId", ticketController.delete);
+router.put("/:id", ticketController.put);
 
 module.exports = router;

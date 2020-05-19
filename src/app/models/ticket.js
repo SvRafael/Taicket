@@ -1,9 +1,13 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var ticketSchema = new Schema({
-    name: {type: String, default: "", required: true},
-    value: {type: Number, default: "", required: true, },
+const ticketSchema = new Schema({
+    name: {type: String, required: true },
+    value: {type: Number, required: true, },
+    event: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Event",
+      },    
 });
 
 module.exports = mongoose.model('Ticket', ticketSchema);

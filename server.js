@@ -13,7 +13,6 @@ const indexRoute = require("./src/routes/index-routes");
 const companyRoute = require("./src/routes/company-route");
 const eventRoutes = require("./src/routes/event-routes");
 const authRoutes = require("./src/routes/auth-routes");
-const ticketRoute = require("./src/routes/ticket-routes");
 
 //PERSISTENCIA
 mongoose.connect(
@@ -36,7 +35,6 @@ app.use("/api", indexRoute);
 app.use("/api/company", authService, companyRoute);
 app.use("/api/events", authService, eventRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/ticket", ticketRoute);
 
 app.listen(PORT, () => {
   console.log("server on");
