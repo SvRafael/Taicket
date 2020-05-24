@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 const dotenvSafe = require("dotenv-safe");
-
+let cors = require('cors')
+app.use(cors())
 const PORT = process.env.port || 3000;
 
 dotenvSafe.config();
