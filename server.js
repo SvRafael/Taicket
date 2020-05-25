@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 const dotenvSafe = require("dotenv-safe");
+const cors = require("cors");
 
 const PORT = process.env.port || 3000;
 
@@ -23,6 +24,8 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+
+app.use(cors());
 
 //Configurar app para usar body-parse
 app.use(bodyParser.urlencoded({ extended: true }));
