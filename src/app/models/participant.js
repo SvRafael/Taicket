@@ -1,12 +1,14 @@
-const  mongoose = require('mongoose');
-const bcrypt = require ('bcrypt');
-const participantSchema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const participantSchema = new Schema({
-    name: {type: String,'', required:true},
-    email: {type: String,'', required:true},
-    cpf: {type: String, '', required:true},
-
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  cpf: { type: String, required: true },
+  company: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Company",
+  },
 });
 
-module.exports = mongoose.model('Participant', participantSchema);
+module.exports = mongoose.model("Participant", participantSchema);

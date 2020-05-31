@@ -1,12 +1,30 @@
-const  mongoose = require('mongoose');
-const bcrypt = require ('bcrypt');
-const participantSchema = mongoose.Schema;
+const participantRepository = require("./../repositories/participant-repository");
 
-const participantSchema = new Schema({
-    name: {type: String,'', required:true},
-    email: {type: String,'', required:true},
-    cpf: {type: String, '', required:true},
+exports.post = async (req, res) => {
+  try {
+    const participant = await participantRepository.post({
+      ...req.body,
+      company: req.company,
+    });
 
-});
+    res
+      .status(201)
+      .json({ message: "Participante criado com sucesso!", participant });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao criar participante!", error });
+  }
+};
 
-module.exports = mongoose.model('Participant', participantSchema);
+exports.getAll = async (req, res) => {
+  try {
+    const participants = await participantRepository.getAll({
+      company: req.company,
+    });
+
+    res
+      .status(201)
+      .json({ message: "Participantes listados com sucesso!", participants });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao listar participantes!", error });
+  }
+};
