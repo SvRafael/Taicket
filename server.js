@@ -13,6 +13,7 @@ const authService = require("./src/services/auth-service");
 const indexRoute = require("./src/routes/index-routes");
 const companyRoute = require("./src/routes/company-route");
 const eventRoutes = require("./src/routes/event-routes");
+const participantRoutes = require("./src/routes/participant-routes");
 const authRoutes = require("./src/routes/auth-routes");
 
 //PERSISTENCIA
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use("/api", indexRoute);
 app.use("/api/company", authService, companyRoute);
 app.use("/api/events", authService, eventRoutes);
+app.use("/api/participants", authService, participantRoutes);
 app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {

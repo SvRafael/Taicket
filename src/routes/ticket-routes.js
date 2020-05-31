@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const ticketController = require("./../controller/ticket-controller");
 
-
 router.post("/", ticketController.post);
 
 router.get("/", ticketController.getAll);
