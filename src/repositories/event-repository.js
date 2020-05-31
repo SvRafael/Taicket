@@ -7,7 +7,7 @@ exports.post = async ({ company, ...data }) => {
 };
 
 exports.getAll = async ({ company }) => {
-  const events = Event.find({ company: company.id });
+  const events = Event.find({ company: company.id }).populate("company");
 
   return events;
 };

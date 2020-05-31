@@ -19,9 +19,7 @@ exports.getAll = async (req, res) => {
       company: req.company,
     });
 
-    res
-      .status(201)
-      .json({ message: "Eventos listados com sucesso!", event: events });
+    res.status(201).json({ message: "Eventos listados com sucesso!", events });
   } catch (error) {
     res.status(500).json({ message: "Erro ao listar eventos!", error });
   }
