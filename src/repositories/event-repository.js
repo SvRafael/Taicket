@@ -25,3 +25,7 @@ exports.put = async (id, data) => {
     { new: true }
   );
 };
+
+exports.delete = async (id) => {
+  return Event.findByIdAndRemove(id);
+};

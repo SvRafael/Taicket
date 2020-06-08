@@ -61,3 +61,18 @@ exports.put = async (req, res) => {
     res.status(500).json({ message: "Erro ao atualizar evento!", error });
   }
 };
+
+exports.delete = async (req, res) => {
+  try {
+    const event = await eventRepository.delete(req.params.id);
+
+    if (event) {
+      res.status(201).json({ message: "Evento removido com sucesso!", event });
+      return;
+    }
+
+    res.status(404).json({ message: "Evento não encontrado!" });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao remover evento!", error });
+  }
+};

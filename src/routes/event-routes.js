@@ -11,6 +11,8 @@ router.get("/:id", eventController.getById);
 
 router.put("/:id", eventController.put);
 
+router.delete("/:id", eventController.delete);
+
 router.use("/:idEvent/tickets", ticketRoutes);
 
 module.exports = router;
