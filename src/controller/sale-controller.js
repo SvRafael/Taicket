@@ -6,9 +6,6 @@ exports.get = async (req, res) => {
 
     res.status(201).json({ message: "Vendas listadas com sucesso!", sales });
   } catch (error) {
-    console.log("================");
-    console.log("error", error);
-    console.log("================");
     res.status(500).json({ message: "Erro ao listar vendas!", error });
   }
 };
