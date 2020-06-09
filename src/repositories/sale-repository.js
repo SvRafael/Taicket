@@ -5,18 +5,17 @@ const Ticket = require("../app/models/ticket");
 
 exports.get = async ({ company }) => {
   const sales = await Sale.find({ company: company.id });
+  const salesFormatted = [];
 
   for (sale of sales) {
-    const event = await Event.findById(sale.event);
     const company = await Company.findById(sale.company);
     const ticket = await Ticket.findById(sale.ticket);
+    const event = await Event.findById(ticket.event);
 
-    sale.event = event;
-    sale.company = company;
-    sale.ticket = ticket;
+    salesFormatted.push({ ...sale.toObject(), event, company, ticket });
   }
 
-  return sales;
+  return salesFormatted;
 };
 
 exports.getEvent = async (idEvent) => {

@@ -12,12 +12,6 @@ const eventSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Company",
   },
-  tickets: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Ticket",
-    },
-  ],
 });
 
 module.exports = mongoose.model("Event", eventSchema);
