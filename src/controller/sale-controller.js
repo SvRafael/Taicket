@@ -1,5 +1,18 @@
 const saleRepository = require("./../repositories/sale-repository");
 
+exports.get = async (req, res) => {
+  try {
+    const sales = await saleRepository.get({ company: req.company });
+
+    res.status(201).json({ message: "Vendas listadas com sucesso!", sales });
+  } catch (error) {
+    console.log("================");
+    console.log("error", error);
+    console.log("================");
+    res.status(500).json({ message: "Erro ao listar vendas!", error });
+  }
+};
+
 exports.getEvent = async (req, res) => {
   try {
     const event = await saleRepository.getEvent(req.params.idEvent);
