@@ -40,7 +40,7 @@ app.use("/api", indexRoute);
 app.use("/api/company", authService, companyRoute);
 app.use("/api/events", authService, eventRoutes);
 app.use("/api/participants", authService, participantRoutes);
-app.use("/api/sales", authService, saleRoutes);
+app.use("/api/sales", saleRoutes);
 app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
